@@ -1,0 +1,130 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    z-index: 10;
+}
+
+.navbar nav ul {
+    list-style: none;
+    text-align: center;
+}
+
+.navbar nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.navbar nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.navbar nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Main Container */
+.main-container {
+    display: flex;
+    margin-top: 60px; 
+}
+
+.left-menu {
+    width: 20%;
+    background-color: #f4f4f4;
+    padding: 15px;
+    position: relative;
+}
+
+.menu-content {
+    display: block;
+}
+
+.collapse-btn {
+    font-size: 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+.left-menu ul {
+    list-style: none;
+}
+
+.left-menu ul li a {
+    display: block;
+    text-decoration: none;
+    color: #333;
+    padding: 10px 0;
+}
+
+.left-menu ul li a:hover {
+    background-color: #ddd;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.right-panel {
+    width: 25%;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+/* Media Queries for Shrinking Page Based on Screen Width */
+@media screen and (max-width: 1600px) and (min-width: 992px) {
+    body {
+        transform: scale(0.9);
+        transform-origin: top;
+    }
+}
+
+@media screen and (max-width: 767px) and (min-width: 700px) {
+    body {
+        transform: scale(0.8);
+        transform-origin: top;
+    }
+}
+
+@media screen and (max-width: 700px) and (min-width: 600px) {
+    body {
+        transform: scale(0.75);
+        transform-origin: top;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    body {
+        transform: scale(0.5);
+        transform-origin: top;
+    }
+}

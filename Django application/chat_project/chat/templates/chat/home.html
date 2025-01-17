@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat Home</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 40px;
+            color: #4CAF50;
+            font-size: 28px;
+        }
+
+        .logout {
+            text-align: center;
+            font-size: 16px;
+            color: #ffffff;
+            text-decoration: none;
+            margin-top: 20px;
+            font-weight: bold;
+            background-color: #e74c3c;
+            padding: 12px;
+            border-radius: 6px;
+            transition: background-color 0.3s;
+        }
+
+        .logout:hover {
+            background-color: #c0392b;
+            text-decoration: underline;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 22px;
+            margin-top: 30px;
+            color: #333;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            width: 100%;
+            max-width: 500px;
+            margin: 20px auto;
+        }
+
+        li {
+            margin: 12px 0;
+        }
+
+        a {
+            display: block;
+            font-size: 18px;
+            color: #ffffff;
+            background-color: #4CAF50; /* Green button color */
+            padding: 12px;
+            text-decoration: none;
+            border-radius: 6px;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        a:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Welcome, {{ request.user.username }}!</h1>
+
+    <a href="{% url 'logout' %}" class="logout">Logout</a>
+
+    <h2>Users:</h2>
+    <ul>
+        {% for user in users %}
+            <li><a href="{% url 'chat_view' user.username %}">{{ user.username }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

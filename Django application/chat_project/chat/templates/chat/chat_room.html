@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat with {{ selected_user.username }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+            color: #3e24d4;
+            font-size: 30px;
+        }
+
+        #chat-box {
+            margin: 20px;
+            padding: 10px;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            max-height: 400px;
+            overflow-y: auto;
+            border-radius: 8px;
+        }
+
+        #chat-box div {
+            padding: 8px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;  /* Stack the textarea and button vertically */
+            align-items: center;     /* Horizontally center the textarea and button */
+            justify-content: center; /* Vertically center the textarea and button */
+            margin-top: 20px;
+        }
+
+        textarea {
+            width: 90%;
+            height: 100px;
+            margin: 10px 0; /* Margin on top and bottom */
+            padding: 10px;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        button {
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: #fff;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 15px;
+            display: inline-block;
+        }
+
+
+
+        button:hover {
+            background: linear-gradient(135deg, #7a9c7c, #212e21);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .back-button {
+            padding: 12px 20px;
+            background-color: #e38520;
+            color: #fff;
+            font-size: 18px;
+            text-decoration: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            display: inline-block;
+            text-align: center; /* Center the text inside the button */
+            margin-left: auto;  /* Aligns the button to the left of the parent */
+            margin-right: auto; /* Aligns the button to the right of the parent */
+        }
+
+        .back-button:hover {
+            background: linear-gradient(135deg, #cfa95f, #212e21);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+        }
+
+        /* Add this container to center the button */
+        .center-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+
+    </style>
+</head>
+<body>
+    <h2>Chat with {{ selected_user.username }}</h2>
+    <div class="center-container">
+        <a href="{% url 'chat_home' %}" class="back-button">Back to Users</a>
+    </div>
+    
+
+    <div id="chat-box">
+        {% for message in messages %}
+            <div>
+                <strong>{{ message.sender.username }}:</strong> {{ message.content }}
+            </div>
+        {% endfor %}
+    </div>
+
+    <form method="POST">
+        {% csrf_token %}
+        <textarea name="message" required placeholder="Type your message..."></textarea>
+        <button type="submit">Send</button>
+    </form>
+</body>
+</html>
